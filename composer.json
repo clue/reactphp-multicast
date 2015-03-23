@@ -1,0 +1,28 @@
+{
+    "name": "clue/multicast-react",
+    "description": "Simple async/streaming UDP multicast client and server",
+    "keywords": ["multicast", "mcast", "udp", "ReactPHP", "async"],
+    "homepage": "https://github.com/clue/php-multicast-react",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Lück",
+            "email": "christian@lueck.tv"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Clue\\React\\Multicast\\": "src/" }
+    },
+    "require": {
+        "php": ">=5.3",
+        "react/event-loop": "~0.3.0|~0.4.0",
+        "react/promise": "~1.0|~2.0",
+        "clue/socket-react": "~0.3.0"
+    },
+    "require-dev": {
+        "clue/hexdump": "0.2.*"
+    },
+    "suggest": {
+        "php": "PHP 5.4+ is required for listening on multicast addresses and IGMP announcements"
+    }
+}
