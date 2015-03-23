@@ -5,6 +5,7 @@ namespace Clue\React\Multicast;
 use React\EventLoop\LoopInterface;
 use Socket\React\Datagram\Factory as DatagramFactory;
 use Socket\Raw\Factory as RawFactory;
+use BadMethodCallException;
 
 class Factory
 {
