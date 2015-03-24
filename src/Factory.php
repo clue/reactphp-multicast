@@ -10,8 +10,6 @@ use RuntimeException;
 class Factory
 {
     private $loop;
-    private $rawFactory;
-    private $datagramFactory;
 
     public function __construct(LoopInterface $loop)
     {
@@ -31,7 +29,10 @@ class Factory
     public function createReceiver($address)
     {
         if (!defined('MCAST_JOIN_GROUP')) {
-            throw new BadMethodCallException('MCAST_JOIN_GROUP not defined');
+            throw new BadMethodCallException('MCAST_JOIN_GROUP not defined (requires PHP 5.4+)');
+        }
+        if (!function_exists('socket_import_stream')) {
+            throw new BadMethodCallException('Function socket_import_stream missing (requires ext-sockets and PHP 5.4+)');
         }
 
         $parts = parse_url('udp://' . $address);
