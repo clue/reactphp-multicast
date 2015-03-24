@@ -16,8 +16,7 @@
     "require": {
         "php": ">=5.3",
         "react/event-loop": "~0.3.0|~0.4.0",
-        "react/promise": "~1.0|~2.0",
-        "clue/socket-react": "~0.3.0"
+        "react/datagram": "~1.0"
     },
     "require-dev": {
         "clue/hexdump": "0.2.*"

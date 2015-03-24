@@ -3,8 +3,7 @@
 namespace Clue\React\Multicast;
 
 use React\EventLoop\LoopInterface;
-use Socket\React\Datagram\Factory as DatagramFactory;
-use Socket\Raw\Factory as RawFactory;
+use React\Datagram\Socket as DatagramSocket;
 use BadMethodCallException;
 
 class Factory
@@ -13,24 +12,16 @@ class Factory
     private $rawFactory;
     private $datagramFactory;
 
-    public function __construct(LoopInterface $loop, RawFactory $rawFactory = null, DatagramFactory $datagramFactory = null)
+    public function __construct(LoopInterface $loop)
     {
-        if ($rawFactory === null) {
-            $rawFactory = new RawFactory();
-        }
-
-        if ($datagramFactory === null) {
-            $datagramFactory = new DatagramFactory($loop);
-        }
-
-        $this->rawFactory = $rawFactory;
-        $this->datagramFactory = $datagramFactory;
+        $this->loop = $loop;
     }
 
     public function createSender()
     {
-        $socket = $this->rawFactory->createUdp4();
-        return $this->datagramFactory->createFromRaw($socket);
+        $stream = stream_socket_server('udp://0.0.0.0:0', $errno, $errstr, STREAM_SERVER_BIND);
+
+        return new DatagramSocket($this->loop, $stream);
     }
 
     public function createReceiver($address)
@@ -41,19 +32,21 @@ class Factory
 
         $parts = parse_url('udp://' . $address);
 
-        $socket = $this->rawFactory->createUdp4();
+        $stream = stream_socket_server('udp://0.0.0.0:' . $parts['port'], $errno, $errstr, STREAM_SERVER_BIND);
+
+        $socket = socket_import_stream($stream);
 
         // allow multiple processes to bind to the same address
-        $socket->setOption(SOL_SOCKET, SO_REUSEADDR, 1);
+        socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);
 
         // join multicast group and bind to port
-        $socket->setOption(
+        socket_set_option(
+            $socket,
             IPPROTO_IP,
             MCAST_JOIN_GROUP,
             array('group' => $parts['host'], 'interface' => 0)
         );
-        $socket->bind('0.0.0.0:' . $parts['port']);
 
-        return $this->datagramFactory->createFromRaw($socket);
+        return new DatagramSocket($this->loop, $stream);
     }
 }
