@@ -41,17 +41,11 @@ for the required multicast socket options and constants.
 
 These options are only available to the low level socket API (ext-sockets), not
 to the newer stream based networking API.
-Because of this, this library depends on sockets based on `ext-sockets`, provided
-via [clue/socket-react](https://github.com/clue/php-socket-react)
-and [clue/socket-raw](https://github.com/clue/php-socket-raw).
-
 For the most part, React PHP is built around the general purpose stream based API
 and has only somewhat limited support for the low level socket API.
-The package [clue/socket-react](https://github.com/clue/php-socket-react)
-works around this for the most part.
-Simply put, you should try to avoid using the default `StreamSelectLoop`,
-as it requires a workaround to poll the socket resources via a periodic timer
-every 10ms.
+Because of this, this library uses a workaround to create stream based sockets
+and then sets the required socket options on its underlying low level socket
+resource.
 
 This library also provides somewhat limited support for PHP 5.3.
 While this version lacks the required socket options and constants for listening

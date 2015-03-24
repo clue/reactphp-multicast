@@ -22,6 +22,7 @@
         "clue/hexdump": "0.2.*"
     },
     "suggest": {
-        "php": "PHP 5.4+ is required for listening on multicast addresses and IGMP announcements"
+        "php": "PHP 5.4+ is required for listening on multicast addresses (socket options to send IGMP announcements)",
+        "ext-sockets": "Low level socket API required for listening on multicast addresses (socket options to send IGMP announcements)"
     }
 }
