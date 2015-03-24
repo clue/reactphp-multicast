@@ -34,6 +34,45 @@ $loop->run();
 
 See also the [examples](examples).
 
+## Usage
+
+### Factory
+
+The `Factory` is responsible for creating your [`Socket`](#socket) instances.
+It also registers everything with the main [`EventLoop`](https://github.com/reactphp/event-loop#usage).
+
+```php
+$loop = React\EventLoop\Factory::create();
+$factory = new Factory($loop);
+```
+
+#### createSender()
+
+The `createSender()` method can be used to create a socket capable of sending outgoing multicast datagrams and receiving incoming unicast responses. It returns a [`Socket`](#socket) instance.
+
+#### createReceiver()
+
+The `createSender($address)` method can be used to create a socket capable of receiving incoming multicast datagrams and sending outgoing unicast or multicast datagrams. It returns a [`Socket`](#socket) instance.
+
+### Socket
+
+The [`Factory`](#factory) creates instances of the `React\Datagram\Socket` class from the [react/datagram](https://github.com/reactphp/datagram) package.
+
+```php
+$socket->send($message, $address);
+
+$socket->on('message', function ($message, $address) { });
+$socket->on('close', function() { });
+
+$socket->pause();
+$socket->resume();
+
+$socket->end();
+$socket->close();
+```
+
+Please refer to the [datagram documentation](https://github.com/reactphp/datagram#usage) for more details.
+
 ## Description
 
 [PHP 5.4 added support](http://php.net/manual/en/migration54.global-constants.php)
