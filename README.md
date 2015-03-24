@@ -12,7 +12,7 @@ Among others, multicast networking is the basis for:
 * HTTPU/HTTPMU (Multicast and Unicast UDP HTTP Messages)
 * UPNP/SSDP (Univeral Plug and Play / Simple Service Discovery Protocol).
 
-> Note: This project is in early alpha stage! Feel free to report any issues you encounter.
+> Note: This project is in beta stage! Feel free to report any issues you encounter.
 
 ## Quickstart example
 
@@ -67,7 +67,7 @@ The recommended way to install this library is [through composer](http://getcomp
 ```JSON
 {
     "require": {
-        "clue/multicast-react": "dev-master"
+        "clue/multicast-react": "~0.1.0"
     }
 }
 ```
