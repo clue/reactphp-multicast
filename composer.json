@@ -16,13 +16,13 @@
     "require": {
         "php": ">=5.3",
         "react/event-loop": "~0.3.0|~0.4.0",
-        "react/promise": "~1.0|~2.0",
-        "clue/socket-react": "~0.3.0"
+        "react/datagram": "~1.0"
     },
     "require-dev": {
         "clue/hexdump": "0.2.*"
     },
     "suggest": {
-        "php": "PHP 5.4+ is required for listening on multicast addresses and IGMP announcements"
+        "php": "PHP 5.4+ is required for listening on multicast addresses (socket options to send IGMP announcements)",
+        "ext-sockets": "Low level socket API required for listening on multicast addresses (socket options to send IGMP announcements)"
     }
 }
