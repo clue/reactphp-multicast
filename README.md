@@ -100,7 +100,7 @@ The recommended way to install this library is [through composer](http://getcomp
 ```JSON
 {
     "require": {
-        "clue/multicast-react": "~0.1.0"
+        "clue/multicast-react": "~0.2.0"
     }
 }
 ```
