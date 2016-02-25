@@ -50,9 +50,28 @@ $factory = new Factory($loop);
 
 The `createSender()` method can be used to create a socket capable of sending outgoing multicast datagrams and receiving incoming unicast responses. It returns a [`Socket`](#socket) instance.
 
+This method works on PHP versions as old as PHP 5.3 (and up), as its socket API has always been
+[level 1 multicast conformant](http://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2).
+
 #### createReceiver()
 
 The `createSender($address)` method can be used to create a socket capable of receiving incoming multicast datagrams and sending outgoing unicast or multicast datagrams. It returns a [`Socket`](#socket) instance.
+
+This method requires PHP 5.4 (or up) and ext-sockets.
+Otherwise, it will throw a `BadMethodCallException`.
+This is a requirement because receiving multicast datagrams requires a
+[level 2 multicast conformant](http://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2)
+socket API.
+The required multicast socket options and constants have been added with
+[PHP 5.4](http://php.net/manual/en/migration54.global-constants.php) (and up).
+These options are only available to the low level socket API (ext-sockets), not
+to the newer stream based networking API.
+
+Internally, this library uses a workaround to create stream based sockets
+and then sets the required socket options on its underlying low level socket
+resource.
+This is done because React PHP is built around the general purpose stream based API
+and has only somewhat limited support for the low level socket API.
 
 ### Socket
 
@@ -72,26 +91,6 @@ $socket->close();
 ```
 
 Please refer to the [datagram documentation](https://github.com/reactphp/datagram#usage) for more details.
-
-## Description
-
-[PHP 5.4 added support](http://php.net/manual/en/migration54.global-constants.php)
-for the required multicast socket options and constants.
-
-These options are only available to the low level socket API (ext-sockets), not
-to the newer stream based networking API.
-For the most part, React PHP is built around the general purpose stream based API
-and has only somewhat limited support for the low level socket API.
-Because of this, this library uses a workaround to create stream based sockets
-and then sets the required socket options on its underlying low level socket
-resource.
-
-This library also provides somewhat limited support for PHP 5.3.
-While this version lacks the required socket options and constants for listening
-on multicast addresses for incoming messages, its underlying socket API is still
-[level 1 multicast conformant](http://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2).
-This means that it can be used for sending outgoing packages to multicast addresses
-and receiving incoming unicast responses in return.
 
 ## Install
 
