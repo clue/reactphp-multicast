@@ -50,12 +50,36 @@ $factory = new Factory($loop);
 
 The `createSender()` method can be used to create a socket capable of sending outgoing multicast datagrams and receiving incoming unicast responses. It returns a [`Socket`](#socket) instance.
 
+```php
+$socket = $factory->createSender();
+
+// send a multicast message to everybody listening on the given address
+$socket->send('hello?', '224.10.20.30:4050');
+
+// report incoming unicast replies
+$socket->on('message', function ($data, $address) {
+    echo 'received ' . strlen($data) . ' bytes from ' . $address . PHP_EOL;
+});
+```
+
 This method works on PHP versions as old as PHP 5.3 (and up), as its socket API has always been
 [level 1 multicast conformant](http://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2).
 
 #### createReceiver()
 
 The `createSender($address)` method can be used to create a socket capable of receiving incoming multicast datagrams and sending outgoing unicast or multicast datagrams. It returns a [`Socket`](#socket) instance.
+
+```php
+$socket = $factory->createReceiver('224.10.20.30:4050');
+
+// report incoming multicast messages 
+$socket->on('message', function ($data, $remote) use ($socket) {
+    echo 'Sending back ' . strlen($data) . ' bytes to ' . $remote . PHP_EOL;
+    
+    // send a unitcast reply to the remote
+    $socket->send($data, $remote);
+});
+```
 
 This method requires PHP 5.4 (or up) and ext-sockets.
 Otherwise, it will throw a `BadMethodCallException`.
