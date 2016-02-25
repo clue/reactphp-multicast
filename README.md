@@ -12,6 +12,17 @@ Among others, multicast networking is the basis for:
 * HTTPU/HTTPMU (Multicast and Unicast UDP HTTP Messages)
 * UPNP/SSDP (Univeral Plug and Play / Simple Service Discovery Protocol).
 
+**Table of Contents**
+
+* [Quickstart example](#quickstart-example)
+* [Usage](#usage)
+  * [Factory](#factory)
+    * [createSender()](#createsender)
+    * [createReceiver()](#createreceiver)
+  * [Socket](#socket)
+* [Install](#install)
+* [License](#license)
+
 > Note: This project is in beta stage! Feel free to report any issues you encounter.
 
 ## Quickstart example
@@ -76,7 +87,7 @@ $socket = $factory->createReceiver('224.10.20.30:4050');
 $socket->on('message', function ($data, $remote) use ($socket) {
     echo 'Sending back ' . strlen($data) . ' bytes to ' . $remote . PHP_EOL;
     
-    // send a unitcast reply to the remote
+    // send a unicast reply to the remote
     $socket->send($data, $remote);
 });
 ```
