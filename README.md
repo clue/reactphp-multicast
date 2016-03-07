@@ -23,8 +23,6 @@ Among others, multicast networking is the basis for:
 * [Install](#install)
 * [License](#license)
 
-> Note: This project is in beta stage! Feel free to report any issues you encounter.
-
 ## Quickstart example
 
 Once [installed](#install), you can use the following code to create a simple
@@ -129,14 +127,11 @@ Please refer to the [datagram documentation](https://github.com/reactphp/datagra
 
 ## Install
 
-The recommended way to install this library is [through composer](http://getcomposer.org). [New to composer?](http://getcomposer.org/doc/00-intro.md)
+The recommended way to install this library is [through Composer](http://getcomposer.org).
+[New to Composer?](http://getcomposer.org/doc/00-intro.md)
 
-```JSON
-{
-    "require": {
-        "clue/multicast-react": "~0.2.0"
-    }
-}
+```bash
+$ composer require clue/multicast-react:~1.0
 ```
 
 ## License
