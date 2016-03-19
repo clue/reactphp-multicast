@@ -76,7 +76,7 @@ This method works on PHP versions as old as PHP 5.3 (and up), as its socket API 
 
 #### createReceiver()
 
-The `createSender($address)` method can be used to create a socket capable of receiving incoming multicast datagrams and sending outgoing unicast or multicast datagrams. It returns a [`Socket`](#socket) instance.
+The `createReceiver($address)` method can be used to create a socket capable of receiving incoming multicast datagrams and sending outgoing unicast or multicast datagrams. It returns a [`Socket`](#socket) instance.
 
 ```php
 $socket = $factory->createReceiver('224.10.20.30:4050');
