@@ -19,7 +19,8 @@
         "react/datagram": "~1.0"
     },
     "require-dev": {
-        "clue/hexdump": "0.2.*"
+        "clue/hexdump": "0.2.*",
+        "phpunit/phpunit": "^6.0 || ^5.7 || ^4.8.35"
     },
     "suggest": {
         "php": "PHP 5.4+ is required for listening on multicast addresses (socket options to send IGMP announcements)",

@@ -15,6 +15,7 @@ class FunctionalTest extends TestCase
         $this->factory = new Factory($this->loop);
     }
 
+    /** @doesNotPerformAssertions */
     public function testSenderWithNoReceiver()
     {
         $sender = $this->factory->createSender();
