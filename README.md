@@ -21,6 +21,7 @@ Among others, multicast networking is the basis for:
     * [createReceiver()](#createreceiver)
   * [Socket](#socket)
 * [Install](#install)
+* [Tests](#tests)
 * [License](#license)
 
 ## Quickstart example
@@ -132,6 +133,21 @@ The recommended way to install this library is [through Composer](http://getcomp
 
 ```bash
 $ composer require clue/multicast-react:~1.0
+```
+
+## Tests
+
+To run the test suite, you first need to clone this repo and then install all
+dependencies [through Composer](https://getcomposer.org):
+
+```bash
+$ composer install
+```
+
+To run the test suite, go to the project root and run:
+
+```bash
+$ php vendor/bin/phpunit
 ```
 
 ## License
