@@ -1,6 +1,6 @@
-# clue/multicast-react [![Build Status](https://travis-ci.org/clue/php-multicast-react.svg?branch=master)](https://travis-ci.org/clue/php-multicast-react)
+# clue/reactphp-multicast [![Build Status](https://travis-ci.org/clue/reactphp-multicast.svg?branch=master)](https://travis-ci.org/clue/reactphp-multicast)
 
-Multicast UDP messages, built on top of [React PHP](http://reactphp.org/).
+Simple multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
 
 Multicast UDP messages are needed for quite a few (low-level) networking protocols.
 This library exposes a simple subset of commonly needed functionality for

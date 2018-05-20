@@ -1,8 +1,8 @@
 {
     "name": "clue/multicast-react",
-    "description": "Simple async/streaming UDP multicast client and server",
+    "description": "Simple multicast UDP message client and server for ReactPHP.",
     "keywords": ["multicast", "mcast", "udp", "ReactPHP", "async"],
-    "homepage": "https://github.com/clue/php-multicast-react",
+    "homepage": "https://github.com/clue/reactphp-multicast",
     "license": "MIT",
     "authors": [
         {
