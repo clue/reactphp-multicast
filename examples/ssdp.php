@@ -1,6 +1,6 @@
 <?php
 /**
- * UPNP simple service discovery protocol (SSDP)
+ * UPnP simple service discovery protocol (SSDP)
  */
 
 use Clue\React\Multicast\Factory;
@@ -14,7 +14,7 @@ $factory = new Factory($loop);
 $sender = $factory->createSender();
 
 // dump all incoming messages
-$sender->on('message', function ($data, $remote) use ($hex) {
+$sender->on('message', function ($data, $remote) {
     echo 'Received from ' . $remote . PHP_EOL;
     echo $data . PHP_EOL;
 });
@@ -24,7 +24,7 @@ $loop->addTimer(3.0, function () use ($sender) {
     $sender->pause();
 });
 
-// send a discovery message that all upnp/ssdp aware devices will respond to
+// send a discovery message that all UPnP/SSDP aware devices will respond to
 $data  = "M-SEARCH * HTTP/1.1\r\n";
 $data .= "HOST: " . $address . "\r\n";
 $data .= "MAN: \"ssdp:discover\"\r\n";
