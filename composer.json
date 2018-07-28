@@ -23,7 +23,6 @@
         "phpunit/phpunit": "^6.0 || ^5.7 || ^4.8.35"
     },
     "suggest": {
-        "php": "PHP 5.4+ is required for listening on multicast addresses (socket options to send IGMP announcements)",
-        "ext-sockets": "Low level socket API required for listening on multicast addresses (socket options to send IGMP announcements)"
+        "ext-sockets": "Requires PHP 5.4+ and the low level socket API for listening on multicast addresses (socket options to send IGMP announcements)"
     }
 }

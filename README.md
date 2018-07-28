@@ -19,7 +19,7 @@ Among others, multicast networking is the basis for:
   * [Factory](#factory)
     * [createSender()](#createsender)
     * [createReceiver()](#createreceiver)
-  * [Socket](#socket)
+  * [SocketInterface](#socketinterface)
 * [Install](#install)
 * [Tests](#tests)
 * [License](#license)
@@ -48,7 +48,7 @@ See also the [examples](examples).
 
 ### Factory
 
-The `Factory` is responsible for creating your [`Socket`](#socket) instances.
+The `Factory` is responsible for creating your [`SocketInterface`](#socketinterface) instances.
 It also registers everything with the main [`EventLoop`](https://github.com/reactphp/event-loop#usage).
 
 ```php
@@ -58,7 +58,9 @@ $factory = new Factory($loop);
 
 #### createSender()
 
-The `createSender()` method can be used to create a socket capable of sending outgoing multicast datagrams and receiving incoming unicast responses. It returns a [`Socket`](#socket) instance.
+The `createSender(): SocketInterface` method can be used to
+create a socket capable of sending outgoing multicast datagrams and receiving
+incoming unicast responses. It returns a [`SocketInterface`](#socketinterface) instance.
 
 ```php
 $socket = $factory->createSender();
@@ -73,11 +75,13 @@ $socket->on('message', function ($data, $address) {
 ```
 
 This method works on PHP versions as old as PHP 5.3 (and up), as its socket API has always been
-[level 1 multicast conformant](http://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2).
+[level 1 multicast conformant](https://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2).
 
 #### createReceiver()
 
-The `createReceiver($address)` method can be used to create a socket capable of receiving incoming multicast datagrams and sending outgoing unicast or multicast datagrams. It returns a [`Socket`](#socket) instance.
+The `createReceiver(string $address): SocketInterface` method can be used to
+create a socket capable of receiving incoming multicast datagrams and sending
+outgoing unicast or multicast datagrams. It returns a [`SocketInterface`](#socketinterface) instance.
 
 ```php
 $socket = $factory->createReceiver('224.10.20.30:4050');
@@ -91,10 +95,10 @@ $socket->on('message', function ($data, $remote) use ($socket) {
 });
 ```
 
-This method requires PHP 5.4 (or up) and ext-sockets.
+This method requires PHP 5.4 (or up) and `ext-sockets`.
 Otherwise, it will throw a `BadMethodCallException`.
 This is a requirement because receiving multicast datagrams requires a
-[level 2 multicast conformant](http://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2)
+[level 2 multicast conformant](https://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2)
 socket API.
 The required multicast socket options and constants have been added with
 [PHP 5.4](http://php.net/manual/en/migration54.global-constants.php) (and up).
@@ -104,12 +108,14 @@ to the newer stream based networking API.
 Internally, this library uses a workaround to create stream based sockets
 and then sets the required socket options on its underlying low level socket
 resource.
-This is done because React PHP is built around the general purpose stream based API
+This is done because ReactPHP is built around the general purpose stream based API
 and has only somewhat limited support for the low level socket API.
 
-### Socket
+### SocketInterface
 
-The [`Factory`](#factory) creates instances of the `React\Datagram\Socket` class from the [react/datagram](https://github.com/reactphp/datagram) package.
+The [`Factory`](#factory) creates instances of the `React\Datagram\SocketInterface`
+from the [react/datagram](https://github.com/reactphp/datagram) package.
+This means that you can use all its normal methods like so:
 
 ```php
 $socket->send($message, $address);
@@ -139,6 +145,10 @@ This project aims to run on any platform and thus does not require any PHP
 extensions and supports running on legacy PHP 5.3 through current PHP 7+ and
 HHVM.
 It's *highly recommended to use PHP 7+* for this project.
+
+The [`createSender()`](#createsender) method works on all supported platforms
+without any additional requirements. However, the [`createReceiver()`](#createreceiver)
+method requires PHP 5.4 (or up) and `ext-sockets`. See above for more details.
 
 ## Tests
 
