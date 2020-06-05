@@ -1,5 +1,7 @@
 <?php
 
+namespace Clue\Tests\React\Multicast;
+
 use Clue\React\Multicast\Factory;
 
 class FunctionalTest extends TestCase
@@ -14,7 +16,7 @@ class FunctionalTest extends TestCase
      */
     public function setUpMocks()
     {
-        $this->loop = React\EventLoop\Factory::create();
+        $this->loop = \React\EventLoop\Factory::create();
         $this->factory = new Factory($this->loop);
     }
 
@@ -34,7 +36,7 @@ class FunctionalTest extends TestCase
     {
         try {
             $receiver1 = $this->factory->createReceiver($this->address);
-        } catch (BadMethodCallException $e) {
+        } catch (\BadMethodCallException $e) {
             $this->markTestSkipped('No multicast support');
         }
 
