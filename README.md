@@ -1,4 +1,6 @@
-# clue/reactphp-multicast [![Build Status](https://travis-ci.org/clue/reactphp-multicast.svg?branch=master)](https://travis-ci.org/clue/reactphp-multicast)
+# clue/reactphp-multicast
+
+[![CI status](https://github.com/clue/reactphp-multicast/workflows/CI/badge.svg)](https://github.com/clue/reactphp-multicast/actions)
 
 Simple multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
 
