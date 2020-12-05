@@ -1,4 +1,6 @@
-# clue/reactphp-multicast [![Build Status](https://travis-ci.org/clue/reactphp-multicast.svg?branch=master)](https://travis-ci.org/clue/reactphp-multicast)
+# clue/reactphp-multicast
+
+[![CI status](https://github.com/clue/reactphp-multicast/workflows/CI/badge.svg)](https://github.com/clue/reactphp-multicast/actions)
 
 Simple multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
 
@@ -142,7 +144,7 @@ $ composer require clue/multicast-react:~1.0
 ```
 
 This project aims to run on any platform and thus does not require any PHP
-extensions and supports running on legacy PHP 5.3 through current PHP 7+ and
+extensions and supports running on legacy PHP 5.3 through current PHP 8+ and
 HHVM.
 It's *highly recommended to use PHP 7+* for this project.
 
