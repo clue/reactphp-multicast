@@ -2,29 +2,37 @@
 
 [![CI status](https://github.com/clue/reactphp-multicast/workflows/CI/badge.svg)](https://github.com/clue/reactphp-multicast/actions)
 
-Simple multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
+Simple, event-driven multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
 
 Multicast UDP messages are needed for quite a few (low-level) networking protocols.
+Among others, multicast networking is the basis for mDNS (Multicast DNS),
+HTTPMU (Multicast UDP HTTP Messages), UPnP/SSDP (Universal Plug and Play /
+Simple Service Discovery Protocol) and others.
 This library exposes a simple subset of commonly needed functionality for
 multicast networking through an easy to use API.
 
-Among others, multicast networking is the basis for:
+**Table of contents**
 
-* MDNS (Multicast DNS)
-* HTTPU/HTTPMU (Multicast and Unicast UDP HTTP Messages)
-* UPNP/SSDP (Univeral Plug and Play / Simple Service Discovery Protocol).
-
-**Table of Contents**
-
+* [Support us](#support-us)
 * [Quickstart example](#quickstart-example)
 * [Usage](#usage)
-  * [Factory](#factory)
-    * [createSender()](#createsender)
-    * [createReceiver()](#createreceiver)
-  * [SocketInterface](#socketinterface)
+    * [Factory](#factory)
+        * [createSender()](#createsender)
+        * [createReceiver()](#createreceiver)
+    * [SocketInterface](#socketinterface)
 * [Install](#install)
 * [Tests](#tests)
 * [License](#license)
+
+## Support us
+
+We invest a lot of time developing, maintaining and updating our awesome
+open-source projects. You can help us sustain this high-quality of our work by
+[becoming a sponsor on GitHub](https://github.com/sponsors/clue). Sponsors get
+numerous benefits in return, see our [sponsoring page](https://github.com/sponsors/clue)
+for details.
+
+Let's take these projects to the next level together! 🚀
 
 ## Quickstart example
 
@@ -136,12 +144,17 @@ Please refer to the [datagram documentation](https://github.com/reactphp/datagra
 
 ## Install
 
-The recommended way to install this library is [through Composer](http://getcomposer.org).
-[New to Composer?](http://getcomposer.org/doc/00-intro.md)
+The recommended way to install this library is [through Composer](https://getcomposer.org).
+[New to Composer?](https://getcomposer.org/doc/00-intro.md)
+
+This project follows [SemVer](https://semver.org/).
+This will install the latest supported version:
 
 ```bash
-$ composer require clue/multicast-react:~1.0
+$ composer require clue/multicast-react:^1.1
 ```
+
+See also the [CHANGELOG](CHANGELOG.md) for details about version upgrades.
 
 This project aims to run on any platform and thus does not require any PHP
 extensions and supports running on legacy PHP 5.3 through current PHP 8+ and
@@ -169,4 +182,7 @@ $ php vendor/bin/phpunit
 
 ## License
 
-MIT
+This project is released under the permissive [MIT license](LICENSE).
+
+> Did you know that I offer custom development services and issuing invoices for
+  sponsorships of releases and for contributions? Contact me (@clue) for details.

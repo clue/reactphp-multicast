@@ -1,13 +1,13 @@
 {
     "name": "clue/multicast-react",
-    "description": "Simple multicast UDP message client and server for ReactPHP.",
+    "description": "Simple, event-driven multicast UDP message client and server for ReactPHP.",
     "keywords": ["multicast", "mcast", "udp", "ReactPHP", "async"],
     "homepage": "https://github.com/clue/reactphp-multicast",
     "license": "MIT",
     "authors": [
         {
             "name": "Christian Lück",
-            "email": "christian@lueck.tv"
+            "email": "christian@clue.engineering"
         }
     ],
     "autoload": {
