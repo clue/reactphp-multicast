@@ -1,6 +1,7 @@
 # clue/reactphp-multicast
 
 [![CI status](https://github.com/clue/reactphp-multicast/workflows/CI/badge.svg)](https://github.com/clue/reactphp-multicast/actions)
+[![installs on Packagist](https://img.shields.io/packagist/dt/clue/multicast-react?color=blue&label=installs%20on%20Packagist)](https://packagist.org/packages/clue/multicast-react)
 
 Simple, event-driven multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
 
