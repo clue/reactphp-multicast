@@ -3,13 +3,12 @@
  * UPnP simple service discovery protocol (SSDP)
  */
 
-use Clue\React\Multicast\Factory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $address = '239.255.255.250:1900';
 
-$factory = new Factory();
+$factory = new Clue\React\Multicast\Factory();
 $sender = $factory->createSender();
 
 // dump all incoming messages

@@ -5,9 +5,6 @@
  * Accepts a single argument socket address (defaults to 224.10.20.30:12345)
  */
 
-use Clue\React\Multicast\Factory;
-use Clue\Hexdump\Hexdump;
-
 require __DIR__ . '/../vendor/autoload.php';
 
 $address = '224.10.20.30:12345'; // random test address
@@ -18,9 +15,9 @@ if (isset($argv[1])) {
     $address = $argv[1];
 }
 
-$factory = new Factory();
+$factory = new Clue\React\Multicast\Factory();
 $socket = $factory->createReceiver($address);
-$hex = new Hexdump();
+$hex = new Clue\Hexdump\Hexdump();
 
 $socket->on('message', function ($data, $remote) use ($hex) {
     echo 'Received from ' . $remote . PHP_EOL;

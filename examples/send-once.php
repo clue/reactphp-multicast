@@ -5,13 +5,11 @@
  * Accepts a single argument socket address (defaults to 224.10.20.30:12345)
  */
 
-use Clue\React\Multicast\Factory;
-
 require __DIR__ . '/../vendor/autoload.php';
 
 $address = isset($argv[1]) ? $argv[1] : '224.10.20.30:12345';
 
-$factory = new Factory();
+$factory = new Clue\React\Multicast\Factory();
 $sender = $factory->createSender();
 
 // do not wait for incoming messages

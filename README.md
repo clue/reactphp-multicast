@@ -41,7 +41,7 @@ Once [installed](#install), you can use the following code to create a simple
 echo server that listens for incoming multicast messages:
 
 ```php
-$factory = new Factory();
+$factory = new Clue\React\Multicast\Factory();
 $socket = $factory->createReceiver('224.10.20.30:4050');
 
 $socket->on('message', function ($data, $remote) use ($socket) {
@@ -60,7 +60,7 @@ See also the [examples](examples).
 The `Factory` is responsible for creating your [`SocketInterface`](#socketinterface) instances.
 
 ```php
-$factory = new Factory();
+$factory = new Clue\React\Multicast\Factory();
 ```
 
 This class takes an optional `LoopInterface|null $loop` parameter that can be used to
