@@ -17,13 +17,10 @@ if (isset($argv[1])) {
     $address = $argv[1];
 }
 
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Factory();
 $socket = $factory->createReceiver($address);
 
 $socket->on('message', function ($data, $remote) use ($socket) {
     echo 'Sending back ' . strlen($data) . ' bytes to ' . $remote . PHP_EOL;
     $socket->send($data, $remote);
 });
-
-$loop->run();

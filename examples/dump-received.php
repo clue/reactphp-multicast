@@ -18,8 +18,7 @@ if (isset($argv[1])) {
     $address = $argv[1];
 }
 
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Factory();
 $socket = $factory->createReceiver($address);
 $hex = new Hexdump();
 
@@ -28,4 +27,3 @@ $socket->on('message', function ($data, $remote) use ($hex) {
     echo $hex->dump($data) . PHP_EOL;
 });
 
-$loop->run();

@@ -12,8 +12,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $address = isset($argv[1]) ? $argv[1] : '224.10.20.30:12345';
 
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Factory();
 $sender = $factory->createSender();
 $hex = new Hexdump();
 
@@ -26,5 +25,3 @@ $sender->on('message', function ($data, $remote) use ($hex) {
 // send a simple message
 $message = 'ping 123';
 $sender->send($message, $address);
-
-$loop->run();
