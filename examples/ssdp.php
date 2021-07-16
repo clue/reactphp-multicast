@@ -3,14 +3,12 @@
  * UPnP simple service discovery protocol (SSDP)
  */
 
-use Clue\React\Multicast\Factory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $address = '239.255.255.250:1900';
 
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Clue\React\Multicast\Factory();
 $sender = $factory->createSender();
 
 // dump all incoming messages
@@ -20,7 +18,7 @@ $sender->on('message', function ($data, $remote) {
 });
 
 // stop waiting for incoming messages after 3.0s (MX is 2s)
-$loop->addTimer(3.0, function () use ($sender) {
+Loop::addTimer(3.0, function () use ($sender) {
     $sender->pause();
 });
 
@@ -32,5 +30,3 @@ $data .= "MX: 2\r\n";
 $data .= "ST: ssdp:all\r\n";
 $data .= "\r\n";
 $sender->send($data, $address);
-
-$loop->run();

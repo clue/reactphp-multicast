@@ -41,8 +41,7 @@ Once [installed](#install), you can use the following code to create a simple
 echo server that listens for incoming multicast messages:
 
 ```php
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Clue\React\Multicast\Factory();
 $socket = $factory->createReceiver('224.10.20.30:4050');
 
 $socket->on('message', function ($data, $remote) use ($socket) {
@@ -50,7 +49,6 @@ $socket->on('message', function ($data, $remote) use ($socket) {
     $socket->send($data, $remote);
 });
 
-$loop->run();
 ```
 
 See also the [examples](examples).
@@ -60,12 +58,16 @@ See also the [examples](examples).
 ### Factory
 
 The `Factory` is responsible for creating your [`SocketInterface`](#socketinterface) instances.
-It also registers everything with the main [`EventLoop`](https://github.com/reactphp/event-loop#usage).
 
 ```php
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Clue\React\Multicast\Factory();
 ```
+
+This class takes an optional `LoopInterface|null $loop` parameter that can be used to
+pass the event loop instance to use for this object. You can use a `null` value
+here in order to use the [default loop](https://github.com/reactphp/event-loop#loop).
+This value SHOULD NOT be given unless you're sure you want to explicitly use a
+given event loop instance.
 
 #### createSender()
 

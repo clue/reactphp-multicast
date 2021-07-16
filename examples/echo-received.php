@@ -5,8 +5,6 @@
  * Accepts a single argument socket address (defaults to 224.10.20.30:12345)
  */
 
-use Clue\React\Multicast\Factory;
-
 require __DIR__ . '/../vendor/autoload.php';
 
 $address = '224.10.20.30:12345'; // random test address
@@ -17,13 +15,10 @@ if (isset($argv[1])) {
     $address = $argv[1];
 }
 
-$loop = React\EventLoop\Factory::create();
-$factory = new Factory($loop);
+$factory = new Clue\React\Multicast\Factory();
 $socket = $factory->createReceiver($address);
 
 $socket->on('message', function ($data, $remote) use ($socket) {
     echo 'Sending back ' . strlen($data) . ' bytes to ' . $remote . PHP_EOL;
     $socket->send($data, $remote);
 });
-
-$loop->run();
