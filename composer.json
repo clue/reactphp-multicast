@@ -11,10 +11,14 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Clue\\React\\Multicast\\": "src/" }
+        "psr-4": {
+            "Clue\\React\\Multicast\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "Clue\\Tests\\React\\Multicast\\": "tests/" }
+        "psr-4": {
+            "Clue\\Tests\\React\\Multicast\\": "tests/"
+        }
     },
     "require": {
         "php": ">=5.3",
@@ -23,7 +27,7 @@
     },
     "require-dev": {
         "clue/hexdump": "0.2.*",
-        "phpunit/phpunit": "^9.3 ||^6.0 || ^5.7 || ^4.8.35"
+        "phpunit/phpunit": "^9.6 ||^6.0 || ^5.7 || ^4.8.36"
     },
     "suggest": {
         "ext-sockets": "Requires PHP 5.4+ and the low level socket API for listening on multicast addresses (socket options to send IGMP announcements)"
