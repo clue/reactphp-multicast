@@ -1,6 +1,6 @@
 # clue/reactphp-multicast
 
-[![CI status](https://github.com/clue/reactphp-multicast/workflows/CI/badge.svg)](https://github.com/clue/reactphp-multicast/actions)
+[![CI status](https://github.com/clue/reactphp-multicast/actions/workflows/ci.yml/badge.svg)](https://github.com/clue/reactphp-multicast/actions)
 [![installs on Packagist](https://img.shields.io/packagist/dt/clue/multicast-react?color=blue&label=installs%20on%20Packagist)](https://packagist.org/packages/clue/multicast-react)
 
 Simple, event-driven multicast UDP message client and server for [ReactPHP](https://reactphp.org/).
@@ -41,6 +41,10 @@ Once [installed](#install), you can use the following code to create a simple
 echo server that listens for incoming multicast messages:
 
 ```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 $factory = new Clue\React\Multicast\Factory();
 $socket = $factory->createReceiver('224.10.20.30:4050');
 
@@ -51,7 +55,7 @@ $socket->on('message', function ($data, $remote) use ($socket) {
 
 ```
 
-See also the [examples](examples).
+See also the [examples](examples/).
 
 ## Usage
 
@@ -108,13 +112,12 @@ $socket->on('message', function ($data, $remote) use ($socket) {
 });
 ```
 
-This method requires PHP 5.4 (or up) and `ext-sockets`.
+This method requires PHP 5.4+ and `ext-sockets`.
 Otherwise, it will throw a `BadMethodCallException`.
 This is a requirement because receiving multicast datagrams requires a
 [level 2 multicast conformant](https://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2)
 socket API.
-The required multicast socket options and constants have been added with
-[PHP 5.4](http://php.net/manual/en/migration54.global-constants.php) (and up).
+The required multicast socket options and constants have been added with PHP 5.4+.
 These options are only available to the low level socket API (ext-sockets), not
 to the newer stream based networking API.
 
@@ -147,14 +150,14 @@ Please refer to the [datagram documentation](https://github.com/reactphp/datagra
 
 ## Install
 
-The recommended way to install this library is [through Composer](https://getcomposer.org).
+The recommended way to install this library is [through Composer](https://getcomposer.org/).
 [New to Composer?](https://getcomposer.org/doc/00-intro.md)
 
 This project follows [SemVer](https://semver.org/).
 This will install the latest supported version:
 
 ```bash
-$ composer require clue/multicast-react:^1.1
+composer require clue/multicast-react:^1.1
 ```
 
 See also the [CHANGELOG](CHANGELOG.md) for details about version upgrades.
@@ -162,7 +165,7 @@ See also the [CHANGELOG](CHANGELOG.md) for details about version upgrades.
 This project aims to run on any platform and thus does not require any PHP
 extensions and supports running on legacy PHP 5.3 through current PHP 8+ and
 HHVM.
-It's *highly recommended to use PHP 7+* for this project.
+It's *highly recommended to use the latest supported PHP version* for this project.
 
 The [`createSender()`](#createsender) method works on all supported platforms
 without any additional requirements. However, the [`createReceiver()`](#createreceiver)
@@ -171,16 +174,16 @@ method requires PHP 5.4 (or up) and `ext-sockets`. See above for more details.
 ## Tests
 
 To run the test suite, you first need to clone this repo and then install all
-dependencies [through Composer](https://getcomposer.org):
+dependencies [through Composer](https://getcomposer.org/):
 
 ```bash
-$ composer install
+composer install
 ```
 
 To run the test suite, go to the project root and run:
 
 ```bash
-$ php vendor/bin/phpunit
+php vendor/bin/phpunit
 ```
 
 ## License

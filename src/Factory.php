@@ -82,13 +82,12 @@ class Factory
      * });
      * ```
      *
-     * This method requires PHP 5.4 (or up) and `ext-sockets`.
+     * This method requires PHP 5.4+ and `ext-sockets`.
      * Otherwise, it will throw a `BadMethodCallException`.
      * This is a requirement because receiving multicast datagrams requires a
      * [level 2 multicast conformant](https://www.tldp.org/HOWTO/Multicast-HOWTO-2.html#ss2.2)
      * socket API.
-     * The required multicast socket options and constants have been added with
-     * [PHP 5.4](http://php.net/manual/en/migration54.global-constants.php) (and up).
+     * The required multicast socket options and constants have been added with PHP 5.4+.
      * These options are only available to the low level socket API (ext-sockets), not
      * to the newer stream based networking API.
      *
