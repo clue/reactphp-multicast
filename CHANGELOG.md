@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 (2024-04-05)
+
+*   Feature: Full PHP 8.3 compatibility.
+    (#22 by @yadaiio)
+
+*   Feature: Simplify usage by supporting new [default loop](https://reactphp.org/event-loop/#loop).
+    (#21 by @PaulRotmann)
+
+*   Minor documentation improvements.
+    (#23 by @yadaiio and #20 by @PaulRotmann)
+
 ## 1.1.0 (2020-12-06)
 
 *   Feature: Forward compatibility with stable EventLoop 1.0 and 0.5.
