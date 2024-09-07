@@ -22,8 +22,8 @@
     },
     "require": {
         "php": ">=5.3",
-        "react/event-loop": "^1.2",
-        "react/datagram": "~1.0"
+        "react/datagram": "^1.10",
+        "react/event-loop": "^1.2"
     },
     "require-dev": {
         "clue/hexdump": "0.2.*",
