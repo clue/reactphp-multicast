@@ -15,7 +15,7 @@ class Factory
 
     /**
      * The `Factory` is responsible for creating your [`SocketInterface`](#socketinterface) instances.
-     * 
+     *
      * This class takes an optional `LoopInterface|null $loop` parameter that can be used to
      * pass the event loop instance to use for this object. You can use a `null` value
      * here in order to use the [default loop](https://github.com/reactphp/event-loop#loop).
@@ -29,8 +29,12 @@ class Factory
      *
      * @param LoopInterface $loop
      */
-    public function __construct(LoopInterface $loop = null)
+    public function __construct($loop = null)
     {
+        if ($loop !== null && !$loop instanceof LoopInterface) { // manual type check to support legacy PHP < 7.1
+            throw new \InvalidArgumentException('Argument #1 ($loop) expected null|React\EventLoop\LoopInterface');
+        }
+
         $this->loop = $loop ?: Loop::get();
     }
 
