@@ -22,12 +22,7 @@ class Factory
      * This value SHOULD NOT be given unless you're sure you want to explicitly use a
      * given event loop instance.
      *
-     * ```php
-     * $loop = React\EventLoop\Factory::create();
-     * $factory = new Factory($loop);
-     * ```
-     *
-     * @param LoopInterface $loop
+     * @param ?LoopInterface $loop
      */
     public function __construct($loop = null)
     {
