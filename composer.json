@@ -10,16 +10,6 @@
             "email": "christian@clue.engineering"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "Clue\\React\\Multicast\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Clue\\Tests\\React\\Multicast\\": "tests/"
-        }
-    },
     "require": {
         "php": ">=5.3",
         "react/datagram": "^1.10",
@@ -31,5 +21,15 @@
     },
     "suggest": {
         "ext-sockets": "Requires PHP 5.4+ and the low level socket API for listening on multicast addresses (socket options to send IGMP announcements)"
+    },
+    "autoload": {
+        "psr-4": {
+            "Clue\\React\\Multicast\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Clue\\Tests\\React\\Multicast\\": "tests/"
+        }
     }
 }
