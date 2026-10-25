@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.3",
         "react/datagram": "^1.10",
-        "react/event-loop": "^1.2"
+        "react/event-loop": "^1.6"
     },
     "require-dev": {
         "clue/hexdump": "0.2.*",
