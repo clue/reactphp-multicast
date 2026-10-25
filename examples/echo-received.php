@@ -8,7 +8,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 $address = '224.10.20.30:12345'; // random test address
-//$address = '239.255.255.250:1900'; // UPNP SSDP (simple service discovery protocol)
+//$address = '239.255.255.250:1900'; // UPnP SSDP (simple service discovery protocol)
 
 // use either above default address or the one given as first argument to this script
 if (isset($argv[1])) {

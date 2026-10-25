@@ -104,10 +104,10 @@ outgoing unicast or multicast datagrams. It returns a [`SocketInterface`](#socke
 ```php
 $socket = $factory->createReceiver('224.10.20.30:4050');
 
-// report incoming multicast messages 
+// report incoming multicast messages
 $socket->on('message', function ($data, $remote) use ($socket) {
     echo 'Sending back ' . strlen($data) . ' bytes to ' . $remote . PHP_EOL;
-    
+
     // send a unicast reply to the remote
     $socket->send($data, $remote);
 });
