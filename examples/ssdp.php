@@ -1,8 +1,9 @@
 <?php
 /**
  * UPnP simple service discovery protocol (SSDP)
+ *
+ * See also https://github.com/clue/reactphp-ssdp
  */
-
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -18,7 +19,7 @@ $sender->on('message', function ($data, $remote) {
 });
 
 // stop waiting for incoming messages after 3.0s (MX is 2s)
-Loop::addTimer(3.0, function () use ($sender) {
+React\EventLoop\Loop::addTimer(3.0, function () use ($sender) {
     $sender->pause();
 });
 
