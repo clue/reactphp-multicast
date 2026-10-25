@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0 (2026-10-25)
+
+*   Feature: Improve PHP 8.5+ and PHP 8.4+ support and update test environment.
+    (#24, #25 and #27 by @clue)
+
+*   Feature / Fix: Improve error reporting when custom error handler is used.
+    (#28 by @clue)
+
+*   Fix: Fix SSDP example and minor documentation improvements.
+    (#30 by @clue)
+
+*   Improve test suite to ensure 100% code coverage and support legacy PHP 7.2 with PHPUnit 8.5.
+    (#26 and #29 by @clue)
+
 ## 1.2.0 (2024-04-05)
 
 *   Feature: Full PHP 8.3 compatibility.
