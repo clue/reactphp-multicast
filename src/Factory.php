@@ -128,6 +128,10 @@ class Factory
             throw new RuntimeException('Unable to enable SO_REUSEADDR');
         }
 
+        set_error_handler(function () {
+            // ignore PHP warning, error is reported via socket_last_error() below
+        });
+
         // join multicast group and bind to port
         $ret = socket_set_option(
             $socket,
@@ -135,8 +139,12 @@ class Factory
             MCAST_JOIN_GROUP,
             array('group' => $parts['host'], 'interface' => 0)
         );
+
+        restore_error_handler();
+
         if ($ret === false) {
-            throw new RuntimeException('Unable to join multicast group');
+            $errno = socket_last_error($socket);
+            throw new RuntimeException('Unable to join multicast group: ' . socket_strerror($errno), $errno);
         }
 
         return new DatagramSocket($this->loop, $stream);

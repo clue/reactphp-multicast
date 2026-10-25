@@ -58,6 +58,31 @@ class FunctionalTest extends TestCase
         $this->loop->run();
     }
 
+    public function testCreateReceiverThrowsForNonMulticastAddressWithoutCallingCustomErrorHandler()
+    {
+        if (!defined('MCAST_JOIN_GROUP') || !function_exists('socket_import_stream')) {
+            $this->markTestSkipped('No multicast support');
+        }
+
+        $error = null;
+        set_error_handler(function ($_, $errstr) use (&$error) {
+            $error = $errstr;
+        });
+
+        $this->setExpectedException('RuntimeException', 'Unable to join multicast group: ' . socket_strerror(SOCKET_EINVAL), SOCKET_EINVAL);
+
+        try {
+            $this->factory->createReceiver('127.0.0.1:2244');
+
+            restore_error_handler();
+        } catch (\Exception $e) {
+            restore_error_handler();
+            $this->assertNull($error);
+
+            throw $e;
+        }
+    }
+
     public function testConstructWithoutLoopAssignsLoopAutomatically()
     {
         $factory = new Factory();
